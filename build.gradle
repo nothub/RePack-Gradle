@@ -1,0 +1,32 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group = 'lol.hub'
+version = '0.1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://www.jitpack.io'
+        content {
+            includeGroup "com.github.ForestBlock-org"
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.github.ForestBlock-org:ReRePack:80e0428f46'
+}
+
+gradlePlugin {
+    plugins {
+        repack {
+            id = 'lol.hub.repack'
+            implementationClass = 'lol.hub.repack.RepackPlugin'
+        }
+    }
+}
+
+//apply plugin: RepackPlugin

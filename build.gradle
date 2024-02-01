@@ -24,9 +24,7 @@ gradlePlugin {
     plugins {
         repack {
             id = 'lol.hub.repack'
-            implementationClass = 'lol.hub.repack.RepackPlugin'
+            implementationClass = 'lol.hub.repack.Plugin'
         }
     }
 }
-
-//apply plugin: RepackPlugin

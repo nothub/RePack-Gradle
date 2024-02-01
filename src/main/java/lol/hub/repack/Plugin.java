@@ -17,6 +17,12 @@ public class Plugin implements org.gradle.api.Plugin<Project> {
                 .create("repack", Extension.class, project);
 
         project.task("repack").doLast(task -> {
+
+            if (!extension.getInput().get().toFile().exists()) {
+                throw new IllegalStateException("Input dir is missing: " + extension.getInput().get().toAbsolutePath());
+            }
+            extension.getOutput().get().toFile().mkdirs();
+
             VanillaItems.loadVanillaItems();
 
             final Optional<Workspace> workspace = WorkspaceBuilder.of(
